@@ -13,7 +13,22 @@ namespace TrackMyWalks
         {
             InitializeComponent();
 
-            MainPage = new TrackMyWalks.MainPage();
+//            MainPage = new TrackMyWalks.MainPage();
+            // Check the Target OS Platform
+            if (Device.RuntimePlatform==  Device.Android)
+            {
+                MainPage = new SplashPage();
+            }
+            else
+            {
+                // The root page of your application
+                var navPage = new NavigationPage(new WalksPage()
+                {
+                    Title = "Track My Walks"
+                });
+                MainPage = navPage;
+            }
+
         }
 
         protected override void OnStart()
